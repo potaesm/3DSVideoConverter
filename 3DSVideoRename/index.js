@@ -9,15 +9,14 @@ fs.readdir(directoryPath, function (err, files) {
     if (err) {
         return console.log('Unable to scan directory: ' + err);
     }
-    var fileCounter = 0;
+    var fileCounter = 1;
     //listing all files using forEach
     files.forEach(function (file) {
         // Do whatever you want to do with the file
         var videoNumber = '0' + fileCounter++;
         fs.rename(directoryPath + '/' + file, directoryPath + '/HNI_00' + videoNumber.substr(-2) + '.AVI', function (err) {
             if (err) throw err;
-            console.log('File Renamed.');
+            console.log('File: ' + file + ' has been renamed.');
         });
-        //console.log(file);
     });
 });
